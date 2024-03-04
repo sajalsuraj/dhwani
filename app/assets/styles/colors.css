@@ -1,0 +1,89 @@
+:root {
+  --picton-blue: #3aade4;
+  --viking-blue: #49d3de;
+  --complete: #6fcf97;
+  --inactive: #bdbdbd;
+  --incomplete: #eb5757;
+  --white: #ffffff;
+  --grey: #f2f2f2;
+  --black: #282828;
+  --selected: #8edef6;
+  --grey-dark: #a09b9b;
+}
+
+.colorPictonBlue {
+  color: var(--picton-blue);
+}
+
+.colorVikingBlue {
+  color: var(--viking-blue);
+}
+
+.colorComplete {
+  color: var(--complete);
+}
+
+.colorInactive {
+  color: var(--inactive);
+}
+
+.colorIncomplete {
+  color: var(--incomplete);
+}
+
+.colorWhite {
+  color: var(--white);
+}
+
+.colorGrey {
+  color: var(--grey);
+}
+
+.colorGreyDark {
+  color: var(--grey-dark);
+}
+
+.colorBlack {
+  color: var(--black);
+}
+
+.colorSelected {
+  color: var(--selected);
+}
+
+/* Background color */
+.bgPictonBlue {
+  background-color: var(--picton-blue);
+}
+
+.bgVikingBlue {
+  background-color: var(--viking-blue);
+}
+
+.bgComplete {
+  background-color: var(--complete);
+}
+
+.bgInactive {
+  background-color: var(--inactive);
+}
+
+.bgIncomplete {
+  background-color: var(--incomplete);
+}
+
+.bgWhite {
+  background-color: var(--white);
+}
+
+.bgGrey {
+  background-color: var(--grey);
+}
+
+.bgBlack {
+  background-color: var(--black);
+}
+
+.bgSelected {
+  background-color: var(--selected);
+}

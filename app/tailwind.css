@@ -1,0 +1,10 @@
+@import url(./assets/styles/base.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "RobotoRegular";
+  font-size: 14px;
+}

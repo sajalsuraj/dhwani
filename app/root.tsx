@@ -7,13 +7,29 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
+  useRouteError,
 } from "@remix-run/react";
+
+import styles from "./tailwind.css";
+import Header from "./components/common/header/header";
+import Modal from "./components/common/modal/modal";
+import { useState } from "react";
+import Login from "./components/common/auth/login";
+import Signup from "./components/common/auth/signup";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: styles },
 ];
+export function Layout({ children }: { children: React.ReactNode }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeAuthPage, setActiveAuthPage] = useState("login");
 
-export default function App() {
+  const handleModalBtnClick = (modalState: boolean) => {
+    setIsModalOpen(modalState);
+  };
+
   return (
     <html lang="en">
       <head>
@@ -23,11 +39,49 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
-        <ScrollRestoration />
+        {/* children will be the root Component, ErrorBoundary, or HydrateFallback */}
+        <Header onLoginClick={handleModalBtnClick} />
+        {children}
+        {isModalOpen && (
+          <Modal onClose={handleModalBtnClick}>
+            {activeAuthPage === "login" && (
+              <Login setActiveAuthPage={setActiveAuthPage} />
+            )}
+            {activeAuthPage === "signup" && (
+              <Signup setActiveAuthPage={setActiveAuthPage} />
+            )}
+          </Modal>
+        )}
         <Scripts />
+        <ScrollRestoration />
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+export default function App() {
+  return <Outlet />;
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <>
+        <h1>
+          {error.status} {error.statusText}
+        </h1>
+        <p>{error.data}</p>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h1>Error!</h1>
+      <p>{"Unknown error"}</p>
+    </>
   );
 }

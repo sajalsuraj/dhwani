@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "RobotoBlack";
+  src: local("RobotoBlack"), url(../fonts/Roboto-Black.ttf);
+}
+
+@font-face {
+  font-family: "RobotoBold";
+  src: local("RobotoBold"), url(../fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+  font-family: "RobotoMedium";
+  src: local("RobotoMedium"), url(../fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+  font-family: "RobotoRegular";
+  src: local("RobotoRegular"), url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: "TT Norms";
+  src: local("TT Norms"), url(../fonts/TTNorms-Regular.otf);
+}
+
+.fontBoldBlack {
+  font-family: "RobotoBlack";
+}
+
+.fontTTNorms {
+  font-family: 'TT Norms';
+}
+
+.fontBold {
+  font-family: "RobotoBold";
+}
+
+.fontMedium {
+  font-family: "RobotoMedium";
+}
+
+.fontRegular {
+  font-family: "RobotoRegular";
+}
+
+h1.heading1 {
+  font-size: 48px;
+  font-family: "RobotoBold";
+}
+
+h2.heading2 {
+  font-size: 36px;
+  font-family: "RobotoBold";
+}
+
+h5.heading5 {
+  font-family: "RobotoBold";
+}

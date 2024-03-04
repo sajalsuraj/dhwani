@@ -1,0 +1,28 @@
+.authForm {
+  box-shadow: inset 1px 3px 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+.signupFields {
+  border: 1px solid #bdbdbd;
+  height: 62px;
+}
+
+.loginBtn {
+  height: 62px;
+}
+
+@media screen and (max-width: 1400px) {
+  .signupFields,
+  .loginBtn {
+    height: 45px;
+  }
+
+  div.authModalContent {
+    width: 990px;
+  }
+
+  div.formSection {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+}
