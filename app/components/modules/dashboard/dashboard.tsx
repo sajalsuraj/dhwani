@@ -3,6 +3,7 @@ import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import { useEffect, useRef, useState } from "react";
 import { format } from "date-fns";
+import styles from "./dashboard.module.css";
 
 type ValuePiece = Date | null;
 
@@ -40,7 +41,11 @@ export default function DashboardContent() {
                 {format(selectedData.current, "d MMMM, yyyy")}
               </div>
               <div>
-                <Calendar onChange={onChange} value={value} />
+                <Calendar
+                  onChange={onChange}
+                  className={styles.reactCalendar}
+                  value={value}
+                />
               </div>
             </div>
           </div>

@@ -1,5 +1,9 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  LoaderFunctionArgs,
+} from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -8,6 +12,8 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
+  json,
+  useLoaderData,
   useRouteError,
 } from "@remix-run/react";
 
@@ -17,12 +23,23 @@ import Modal from "./components/common/modal/modal";
 import { useState } from "react";
 import Login from "./components/common/auth/login";
 import Signup from "./components/common/auth/signup";
+import { userPrefs } from "./utils/cookie.server";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: styles },
 ];
+export const loader: LoaderFunction = async ({
+  request,
+}: LoaderFunctionArgs) => {
+  const cookieHeader = request.headers.get("Cookie");
+  const cookie = (await userPrefs.parse(cookieHeader)) || {};
+  const uId = cookie.uId || null;
+  return json({ uId: cookie.uId });
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { uId } = useLoaderData<typeof loader>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeAuthPage, setActiveAuthPage] = useState("login");
 
@@ -40,15 +57,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {/* children will be the root Component, ErrorBoundary, or HydrateFallback */}
-        <Header onLoginClick={handleModalBtnClick} />
+        <Header
+          isUserLoggedIn={uId !== null}
+          onLoginClick={handleModalBtnClick}
+        />
         {children}
         {isModalOpen && (
           <Modal onClose={handleModalBtnClick}>
             {activeAuthPage === "login" && (
-              <Login setActiveAuthPage={setActiveAuthPage} />
+              <Login
+                onModalClose={handleModalBtnClick}
+                setActiveAuthPage={setActiveAuthPage}
+              />
             )}
             {activeAuthPage === "signup" && (
-              <Signup setActiveAuthPage={setActiveAuthPage} />
+              <Signup
+                onModalClose={handleModalBtnClick}
+                setActiveAuthPage={setActiveAuthPage}
+              />
             )}
           </Modal>
         )}

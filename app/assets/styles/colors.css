@@ -9,6 +9,9 @@
   --black: #282828;
   --selected: #8edef6;
   --grey-dark: #a09b9b;
+  --grey-darker: #5f5f5f;
+  --secondary-btn-bg: #d4d4d4;
+  --primary-btn-bg: #707070;
 }
 
 .colorPictonBlue {
@@ -41,6 +44,10 @@
 
 .colorGreyDark {
   color: var(--grey-dark);
+}
+
+.colorGreyDarker {
+  color: var(--grey-darker);
 }
 
 .colorBlack {

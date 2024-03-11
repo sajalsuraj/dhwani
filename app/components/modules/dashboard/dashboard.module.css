@@ -1,3 +1,7 @@
 .listContainer {
   border: 1px solid #c9c9c9;
 }
+
+.reactCalendar .react-calendar__navigation__label__labelText {
+  color: blue;
+}

@@ -5,6 +5,24 @@
 @tailwind utilities;
 
 body {
-  font-family: 'TT Norms';
+  font-family: "TT Norms";
   font-size: 14px;
+}
+
+.react-calendar {
+  box-shadow: inset 1px 3px 10px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
+.react-calendar button.react-calendar__tile--active {
+  background-color: var(--picton-blue);
+  color: #fff;
+}
+
+.react-calendar .react-calendar__navigation__label__labelText {
+  color: var(--picton-blue);
+  font-weight: 500;
+  font-family: "TT Norms";
 }
